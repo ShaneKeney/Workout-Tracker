@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+
 // Serve static content for the app from the "public" directory in the application directory
 app.use(express.static('public'));
 
