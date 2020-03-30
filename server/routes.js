@@ -1,10 +1,19 @@
 const express = require('express');
 const path = require('path');
+const db = require('./models');
 
 const router = new express.Router();
 
 router.get('/api/workouts', (req, res) => {
     console.log('hit /api/workouts/ GET')
+
+    db.Workout.find({})
+        .then(dbWorkouts => {
+            res.json(dbWorkouts)
+        })
+        .catch(err => {
+            res.json(err)
+        })
 })
 
 router.put('/api/workouts/:id', (req, res) => {

@@ -8,10 +8,7 @@ const WorkoutSchema = new Schema({
         required: 'Day is Required'
     },
     exercises: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Exercise'
-        }
+
     ],
     createdAt: {
         type: Date,
