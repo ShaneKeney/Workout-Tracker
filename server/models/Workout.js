@@ -18,10 +18,14 @@ const WorkoutSchema = new Schema({
     lastUpdated: Date
 })
 
-WorkoutSchema.methods.lastUpdatedDate = function() {
-    this.lastUpdated = Date.now();
+WorkoutSchema.methods.totalDuration = function() {
+    let totalDuration = 0;
+
+    this.exercises.forEach((exercise) => {
+        totalDuration += exercise.duration;
+    });
   
-    return this.lastUpdated;
+    return totalDuration;
 }
 
 const Workout = mongoose.model('Workout', WorkoutSchema);
